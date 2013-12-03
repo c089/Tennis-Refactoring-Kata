@@ -14,7 +14,7 @@ TennisGame1.prototype.wonPoint = function (playerName) {
 TennisGame1.prototype.getScore = function () {
     var score = "";
 
-    function translateScoreToTennisLanguage(score, numberOfPoints) {
+    function translateScoreToTennisLanguage(numberOfPoints) {
         var scoreWords = {
             0: 'Love',
             1: 'Fifteen',
@@ -22,14 +22,13 @@ TennisGame1.prototype.getScore = function () {
             3: 'Forty'
         };
 
-        score += scoreWords[numberOfPoints];
-        return score;
+        return scoreWords[numberOfPoints];
     }
 
     function buildScoreString(player1Score, player2Score) {
-        score = translateScoreToTennisLanguage(score, player1Score);
+        score = translateScoreToTennisLanguage(player1Score);
         score += "-";
-        score = translateScoreToTennisLanguage(score, player2Score);
+        score += translateScoreToTennisLanguage(player2Score);
     }
 
     if (this.scores['player1'] === this.scores['player2']) {
