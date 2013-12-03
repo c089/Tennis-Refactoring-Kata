@@ -27,12 +27,12 @@ TennisGame1.prototype.getScore = function () {
         return score;
     }
 
-    function buildScoreString() {
+    function buildScoreString(player1Score, player2Score) {
         for (var i = 1; i < 3; i++) {
-            if (i === 1) tempScore = this.scores['player1'];
+            if (i === 1) tempScore = player1Score;
             else {
                 score += "-";
-                tempScore = this.scores['player2'];
+                tempScore = player2Score;
             }
             score = translateScoreToTennisLanguage(score, tempScore);
         }
@@ -60,7 +60,7 @@ TennisGame1.prototype.getScore = function () {
         else if (minusResult >= 2) score = "Win for player1";
         else score = "Win for player2";
     } else {
-        buildScoreString.call(this);
+        buildScoreString(this.scores['player1'], this.scores['player2']);
     }
     return score;
 };
