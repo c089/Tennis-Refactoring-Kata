@@ -14,6 +14,24 @@ TennisGame1.prototype.wonPoint = function (playerName) {
 TennisGame1.prototype.getScore = function () {
     var score = "";
     var tempScore = 0;
+
+    function translateScoreToTennisLanguage() {
+        switch (tempScore) {
+            case 0:
+                score += "Love";
+                break;
+            case 1:
+                score += "Fifteen";
+                break;
+            case 2:
+                score += "Thirty";
+                break;
+            case 3:
+                score += "Forty";
+                break;
+        }
+    }
+
     if (this.scores['player1'] === this.scores['player2']) {
         switch (this.scores['player1']) {
             case 0:
@@ -42,20 +60,7 @@ TennisGame1.prototype.getScore = function () {
                 score += "-";
                 tempScore = this.scores['player2'];
             }
-            switch (tempScore) {
-                case 0:
-                    score += "Love";
-                    break;
-                case 1:
-                    score += "Fifteen";
-                    break;
-                case 2:
-                    score += "Thirty";
-                    break;
-                case 3:
-                    score += "Forty";
-                    break;
-            }
+            translateScoreToTennisLanguage();
         }
     }
     return score;
