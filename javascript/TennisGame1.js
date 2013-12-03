@@ -26,9 +26,11 @@ TennisGame1.prototype.getScore = function () {
     }
 
     function buildScoreString(player1Score, player2Score) {
+        var score;
         score = translateScoreToTennisLanguage(player1Score);
         score += "-";
         score += translateScoreToTennisLanguage(player2Score);
+        return score;
     }
 
     if (this.scores['player1'] === this.scores['player2']) {
@@ -53,7 +55,7 @@ TennisGame1.prototype.getScore = function () {
         else if (minusResult >= 2) score = "Win for player1";
         else score = "Win for player2";
     } else {
-        buildScoreString(this.scores['player1'], this.scores['player2']);
+        score = buildScoreString(this.scores['player1'], this.scores['player2']);
     }
     return score;
 };
