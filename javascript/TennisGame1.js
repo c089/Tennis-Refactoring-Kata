@@ -34,22 +34,13 @@ TennisGame1.prototype.getScore = function () {
     }
 
     function buildScoreStringWhenSameScore(points) {
-        var score = "";
-        switch (points) {
-            case 0:
-                score = "Love-All";
-                break;
-            case 1:
-                score = "Fifteen-All";
-                break;
-            case 2:
-                score = "Thirty-All";
-                break;
-            default:
-                score = "Deuce";
-                break;
-        }
-        return score;
+        var scoresWhenEqual = {
+            0: "Love-All",
+            1: "Fifteen-All",
+            2: "Thirty-All",
+        };
+
+        return scoresWhenEqual[points] || "Deuce";
     }
 
     if (this.scores['player1'] === this.scores['player2']) {
