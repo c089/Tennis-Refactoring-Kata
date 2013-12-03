@@ -19,6 +19,10 @@ TennisGame1.prototype.differenceBetweenPlayerScores = function () {
     return this.scores['player1'] - this.scores['player2'];
 };
 
+TennisGame1.prototype.determineLeadingOrWinningPlayer = function () {
+    return this.differenceBetweenPlayerScores() > 0 ? "player1" : "player2";
+};
+
 TennisGame1.prototype.getScore = function () {
     var score = "";
 
@@ -54,12 +58,10 @@ TennisGame1.prototype.getScore = function () {
     if (this.scores['player1'] === this.scores['player2']) {
         score = buildScoreStringWhenSameScore(this.scores['player1']);
     } else if (this.scores['player1'] >= 4 || this.scores['player2'] >= 4) {
-        var minusResult = this.differenceBetweenPlayerScores(),
-            leadingOrWinningPlayer = minusResult > 0 ? "player1": "player2";
         if(this.aPlayerHasWonTheGame()) {
-            score = "Win for " + leadingOrWinningPlayer;
+            score = "Win for " + this.determineLeadingOrWinningPlayer();
         } else {
-            score = "Advantage " + leadingOrWinningPlayer;
+            score = "Advantage " + this.determineLeadingOrWinningPlayer();
         }
     } else {
         score = buildScoreString(this.scores['player1'], this.scores['player2']);
