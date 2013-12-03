@@ -16,20 +16,14 @@ TennisGame1.prototype.getScore = function () {
     var tempScore = 0;
 
     function translateScoreToTennisLanguage(score, tempScore) {
-        switch (tempScore) {
-            case 0:
-                score += "Love";
-                break;
-            case 1:
-                score += "Fifteen";
-                break;
-            case 2:
-                score += "Thirty";
-                break;
-            case 3:
-                score += "Forty";
-                break;
-        }
+        var scoreWords = {
+            0: 'Love',
+            1: 'Fifteen',
+            2: 'Thirty',
+            3: 'Forty'
+        };
+
+        score += scoreWords[tempScore];
         return score;
     }
 
