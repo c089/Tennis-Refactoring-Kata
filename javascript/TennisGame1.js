@@ -1,4 +1,4 @@
-var TennisGame1 = function(player1Name, player2Name) {
+var TennisGame1 = function (player1Name, player2Name) {
     this.scores = {
         player1: 0,
         player2: 0
@@ -7,11 +7,11 @@ var TennisGame1 = function(player1Name, player2Name) {
     this.player2Name = player2Name;
 };
 
-TennisGame1.prototype.wonPoint = function(playerName) {
+TennisGame1.prototype.wonPoint = function (playerName) {
     this.scores[playerName] = this.scores[playerName] + 1;
 };
 
-TennisGame1.prototype.getScore = function() {
+TennisGame1.prototype.getScore = function () {
     var score = "";
     var tempScore = 0;
     if (this.scores['player1'] === this.scores['player2']) {
@@ -29,8 +29,8 @@ TennisGame1.prototype.getScore = function() {
                 score = "Deuce";
                 break;
         }
-    } else if (this.scores['player1']>= 4 || this.scores['player2'] >= 4) {
-        var minusResult = this.scores['player1']- this.scores['player2'];
+    } else if (this.scores['player1'] >= 4 || this.scores['player2'] >= 4) {
+        var minusResult = this.scores['player1'] - this.scores['player2'];
         if (minusResult === 1) score = "Advantage player1";
         else if (minusResult === -1) score = "Advantage player2";
         else if (minusResult >= 2) score = "Win for player1";
