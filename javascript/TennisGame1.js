@@ -11,6 +11,14 @@ TennisGame1.prototype.wonPoint = function (playerName) {
     this.scores[playerName] = this.scores[playerName] + 1;
 };
 
+TennisGame1.prototype.aPlayerHasWonTheGame = function () {
+    return Math.abs(this.differenceBetweenPlayerScores()) >= 2;
+};
+
+TennisGame1.prototype.differenceBetweenPlayerScores = function () {
+    return this.scores['player1'] - this.scores['player2'];
+};
+
 TennisGame1.prototype.getScore = function () {
     var score = "";
 
@@ -43,16 +51,12 @@ TennisGame1.prototype.getScore = function () {
         return scoresWhenEqual[points] || "Deuce";
     }
 
-    function aPlayerHasWonTheGame() {
-        return Math.abs(minusResult) >= 2;
-    }
-
     if (this.scores['player1'] === this.scores['player2']) {
         score = buildScoreStringWhenSameScore(this.scores['player1']);
     } else if (this.scores['player1'] >= 4 || this.scores['player2'] >= 4) {
-        var minusResult = this.scores['player1'] - this.scores['player2'],
+        var minusResult = this.differenceBetweenPlayerScores(),
             leadingOrWinningPlayer = minusResult > 0 ? "player1": "player2";
-        if(aPlayerHasWonTheGame()) {
+        if(this.aPlayerHasWonTheGame()) {
             score = "Win for " + leadingOrWinningPlayer;
         } else {
             score = "Advantage " + leadingOrWinningPlayer;
