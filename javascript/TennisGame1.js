@@ -15,7 +15,7 @@ TennisGame1.prototype.getScore = function () {
     var score = "";
     var tempScore = 0;
 
-    function translateScoreToTennisLanguage() {
+    function translateScoreToTennisLanguage(score, tempScore) {
         switch (tempScore) {
             case 0:
                 score += "Love";
@@ -30,6 +30,7 @@ TennisGame1.prototype.getScore = function () {
                 score += "Forty";
                 break;
         }
+        return score;
     }
 
     if (this.scores['player1'] === this.scores['player2']) {
@@ -60,7 +61,7 @@ TennisGame1.prototype.getScore = function () {
                 score += "-";
                 tempScore = this.scores['player2'];
             }
-            translateScoreToTennisLanguage();
+            score = translateScoreToTennisLanguage(score, tempScore);
         }
     }
     return score;
