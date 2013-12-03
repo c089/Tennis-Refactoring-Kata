@@ -15,7 +15,7 @@ TennisGame1.prototype.getScore = function () {
     var score = "";
     var tempScore = 0;
 
-    function translateScoreToTennisLanguage(score, tempScore) {
+    function translateScoreToTennisLanguage(score, numberOfPoints) {
         var scoreWords = {
             0: 'Love',
             1: 'Fifteen',
@@ -23,7 +23,7 @@ TennisGame1.prototype.getScore = function () {
             3: 'Forty'
         };
 
-        score += scoreWords[tempScore];
+        score += scoreWords[numberOfPoints];
         return score;
     }
 
