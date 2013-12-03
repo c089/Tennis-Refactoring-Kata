@@ -45,7 +45,7 @@ TennisGame1.prototype.getScore = function () {
         var scoresWhenEqual = {
             0: "Love-All",
             1: "Fifteen-All",
-            2: "Thirty-All",
+            2: "Thirty-All"
         };
 
         return scoresWhenEqual[points] || "Deuce";
