@@ -33,8 +33,8 @@ TennisGame1.prototype.getScore = function () {
         return score;
     }
 
-    if (this.scores['player1'] === this.scores['player2']) {
-        switch (this.scores['player1']) {
+    function buildScoreStringWhenSameScore(points) {
+        switch (points) {
             case 0:
                 score = "Love-All";
                 break;
@@ -48,6 +48,10 @@ TennisGame1.prototype.getScore = function () {
                 score = "Deuce";
                 break;
         }
+    }
+
+    if (this.scores['player1'] === this.scores['player2']) {
+        buildScoreStringWhenSameScore(this.scores['player1']);
     } else if (this.scores['player1'] >= 4 || this.scores['player2'] >= 4) {
         var minusResult = this.scores['player1'] - this.scores['player2'];
         if (minusResult === 1) score = "Advantage player1";
