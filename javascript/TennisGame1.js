@@ -28,14 +28,13 @@ TennisGame1.prototype.getScore = function () {
     }
 
     function buildScoreString(player1Score, player2Score) {
-        for (var i = 1; i < 3; i++) {
-            if (i === 1) tempScore = player1Score;
-            else {
-                score += "-";
-                tempScore = player2Score;
-            }
-            score = translateScoreToTennisLanguage(score, tempScore);
-        }
+        tempScore = player1Score;
+        score = translateScoreToTennisLanguage(score, tempScore);
+
+        score += "-";
+
+        tempScore = player2Score;
+        score = translateScoreToTennisLanguage(score, tempScore);
     }
 
     if (this.scores['player1'] === this.scores['player2']) {
