@@ -46,11 +46,12 @@ TennisGame1.prototype.getScore = function () {
     if (this.scores['player1'] === this.scores['player2']) {
         score = buildScoreStringWhenSameScore(this.scores['player1']);
     } else if (this.scores['player1'] >= 4 || this.scores['player2'] >= 4) {
-        var minusResult = this.scores['player1'] - this.scores['player2'];
-        if (minusResult === 1) score = "Advantage player1";
-        else if (minusResult === -1) score = "Advantage player2";
-        else if (minusResult >= 2) score = "Win for player1";
-        else score = "Win for player2";
+        var minusResult = this.scores['player1'] - this.scores['player2'],
+            leadingOrWinningPlayer = minusResult > 0 ? "player1": "player2";
+        if (minusResult === 1) score = "Advantage " + leadingOrWinningPlayer;
+        else if (minusResult === -1) score = "Advantage " + leadingOrWinningPlayer;
+        else if (minusResult >= 2) score = "Win for " + leadingOrWinningPlayer;
+        else score = "Win for " + leadingOrWinningPlayer;
     } else {
         score = buildScoreString(this.scores['player1'], this.scores['player2']);
     }
